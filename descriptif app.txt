@@ -1,0 +1,78 @@
+AYRES est une application web developper par Jandoubi Mohamed Aymen et Ayari Fares en utilisant les langages MERN JS .
+*************************************************************************************************************************
+Description de la partie Front-end
+
+React js pour la partie Front-end developper et mis en ordre dans le dossier Client ou vous trouverez les differents composants comme FlexBetween,Friend,UserImage 
+et Widget Wrapper . 
+
+Qui ont ete ensuite utilisés dans les differentes scenes de notre application que vous pouvez visualiser au niveau du dossier Scenes dans avec le chemin precis 
+"/Projet de fin de formation/client/src/scenes".
+******************************************************
+-HomePage : celle ci est la page avec le link "/home" qui contient un navbar ,un widget qui affiche des posts avec plusieurs options comme les likes, les comments et 
+les partages, un widget qui affiche la liste des amis et qui donnent aussi la possibilité d'ajout ou de suppression d'un ou plusieurs amis ,et un dernier widget qui affiche
+les details du user et sa photo .
+
+-LoginPage : celle ci est la page avec le link "/" qui contient deux forms qui s'affichent l'un a l'inverse de l'autre .Le premier qui est conçu pour donner la possibilité 
+aux users deja enregistrés au niveau de la base de données de se connecter et le deuxieme forme qui s'affiche en appuyant sur le hyperlink "You don't have an account?Register"
+pour ensuite nous afficher les champs requis afin que l'utilisateurs les rempli pour s'enregistrer en utilisant le button "Register" et ensuite il sera automatiquement 
+rediriger au premier form .
+
+-Un Navbar : le navbar est un composant qui s'affiche sur deux pages le homepage et profilepage et qui est composé d'une barre de recherche,d'un boutton de settings 
+, d'un button qui controle le mode ("dark mode","white mode") ,le nom de l'application et le nom de l'utilisateur .
+
+-profilePage : celle ci est la page qui nous permet d'affiche le contenu UI conçu au link "/profile" qui a pour but de filtrer et d'afficher 
+les posts de l'utilisateur en lui meme et non pas de tous les utilisateurs , a part biensur le composant "infoWidget" qui nous donne la 
+possibilité a l'utilisateurs de changer sa photo ou l'une des ses informations personelles et enfin le FriendListWidget .
+*******************************************************
+"/Projet de fin de formation/client/src/scenes/widgets".
+CETTE PARTIE EST UN SOUS ENSEMBLE DE LA PARTIE SCENES OU ON TROUVE LES DIFFERENTS COMPOSANTS PAR LESQUELS SONT COMPOSES LES AUTRES SCENES :
+-AdvertWidget.jsx, FriendListWidget.jsx, MyPostWidget.jsx, PostsWidget.jsx, PostWidget.jsx, UserWidget.jsx .
+
+"/projet de fin de formation/client/src/app.js"
+ET finalement le fichier le plus important le "App.js" qui fait tourner toute notre application WEB en utilisant les technologies du react-router.
+
+Description de la partie Back-end :
+
+la partie back-end a ete elaborer par nous deux en se basant sur les technologies de node js et mongoDB bcrypt pour l'authentification et multer pour 
+l'import et l'export des photos .toutes ces differentes technologies ont ete reunis sous l'architecture models,routes,controllers,middlewares ou on trouve dans
+********************************************************************************************************************************************
+la partie 1 :
+Controllers :
+-auth.js :
+	*avec les deux fonctions register qui permet a la partie partie back-end de recevoir les données et de les stocker au niveau de la base 
+	de données,et la fonction login qui verifie en comparant les données saisi par l'utilisateur avec les données enregistrer afin d'envoyer 
+	une response a la partie front-end qui va etre utiliser pour rediriger l'utilisateur a la bonne page . 
+-posts.js : 
+	*ce controller la contient les fonctions les vitales du projet diviser en trois types les fonctions qui aide a la creation ,d'autre la lecture
+	et un troisieme type qui permet a la modification
+		-CREATE===> CreatePost :permet la creation d'une nouvelle publication .
+		-UPDATE===> LikePost :permet de verifier l'etat du button like si il est deja activer ou pas ensuite il inverse son etat et incremente
+				      ou decremente le nombre de likes du posts au niveau de la base de données .
+			    CommentPost : permet d'enregistrer un nouveau commentaire au niveau de la base de données ou de supprimer un ancien .
+		-LECTURE===> getFeedPosts : permet de ramener les données d'un certains post a partir de la base de données
+			     getUserPosts : permet de ramener les posts d'un user bien precis .
+     
+-users.js : 
+	**ce controller la contient les fonctions les vitales du projet diviser en deux types les fonctions qui aide a la lecture
+	et un deuxieme type qui permet a la modification
+			-UPDATE===>addRemoveFriend :cette fonction au niveau du controller user.js permet de verifier si un autre contact fais deja
+			partie de la liste d'amis de l'utilisateur et ensuite ou bien de l'ajouter ou de le supprimer
+			-LECTURE===> getUser : permet de verifier si un user est enregistrer dans la BDD ou pas 
+			     getUserFriends : permet de ramener la liste d'amis de l'utilisateurs avec leurs infos .
+*********************************************************************************************************************************************
+la partie 2 :
+Middleware :
+cette partie contient un seul composant le middleware auth.js ou il y'a la fonction verify token qui permet de verifier le token generer par la bibliotheque bcrypt
+lors de la connexion de l'utilisateur 
+
+**********************************************************************************************************************************************
+la partie 3 :
+Models :
+cette partie contient deux composants et qui est basée sur mongoose afin de creer les schemas de chaque user et chaque utilisateur .
+***********************************************************************************************************************************************
+la partie 4 :
+Routes :
+cette partie est celle qui nous permet de communiquer avec la base de données en utilisant express js a l'aide des chemins et des requettes http
+qui ont ete precis a l'aide des methode post,get,patch....
+
+  
